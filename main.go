@@ -129,7 +129,7 @@ func timeago(ts int64) string {
 	now := time.Now().Unix()
 	delta := (now - ts) * int64(time.Second)
 	if delta < int64(time.Hour) {
-		return fmt.Sprintf("%v minutes ago", delta/60)
+		return fmt.Sprintf("%v minutes ago", delta/(60*int64(time.Second)))
 	} else if delta < (int64(time.Hour) * 24) {
 		return fmt.Sprintf("%v hours ago", delta/(3600*int64(time.Second)))
 	} else {
